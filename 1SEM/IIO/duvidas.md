@@ -1,0 +1,3 @@
+- página 36 Elementos de Apoio às Aulas. Qual a logíca da escolha por trás dos diferentes pontos do quadro? É relevante para o teste? 
+- Dúvida na seleção da variável que sai da base no algoritmo Simplex Primal. Pag. 45 Elementos de Apoio às Aulas.
+- Porque se acrescenta o valor da função objetivo à função objetivo na seleção da variável que sai da base? Pag. 49 Elementos de Apoio às Aulas.
