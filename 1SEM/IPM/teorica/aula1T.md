@@ -31,3 +31,6 @@ Standard Basis: **I**
 
 **A linear subspac basis is a linear combination of other basis:** PX = Y
 
+## Bakery Algorithm
+
+- Provides First-Come-First-Served for n threads
