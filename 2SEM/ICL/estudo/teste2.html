@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>teste2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="compilation-of-object-oriented-languages---question-1">Compilation of Object-oriented Languages - Question 1</h1>
+<p><img src="image-16.png" alt="Teste"></p>
+<p><img src="image-17.png" alt="Solução"></p>
+<pre class="hljs"><code><div>    <span class="hljs-string">.data</span>
+<span class="hljs-comment"># Descriptor for Graphical (no superclass)</span>
+<span class="hljs-attr">descr_Graphical:</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-number">0</span>                   <span class="hljs-comment"># “null” superclass</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Graphical_move</span>      <span class="hljs-comment"># Graphical::move(int,int)</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Graphical_draw</span>      <span class="hljs-comment"># Graphical::draw()</span>
+
+<span class="hljs-comment"># Descriptor for Rectangle extends Graphical</span>
+<span class="hljs-attr">descr_Rectangle:</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">descr_Graphical</span>     <span class="hljs-comment"># pointer to Graphical’s descriptor</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Graphical_move</span>      <span class="hljs-comment"># inherits move(int,int) with no override</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Rectangle_draw</span>      <span class="hljs-comment"># overrides draw()</span>
+
+<span class="hljs-comment"># Descriptor for Circle extends Graphical (but does not override move(int,int))</span>
+<span class="hljs-attr">descr_Circle:</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">descr_Graphical</span>     <span class="hljs-comment"># pointer to Graphical’s descriptor</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Graphical_move</span>      <span class="hljs-comment"># still uses Graphical::move(int,int)</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Circle_draw</span>         <span class="hljs-comment"># overrides draw()</span>
+    <span class="hljs-string">.quad</span> <span class="hljs-string">Circle_move</span>         <span class="hljs-comment"># new zero-arg method Circle.move()</span>
+</div></code></pre>
+<h1 id="lesson-10---compilation-of-functional-languages---question-23">Lesson 10 - Compilation of Functional Languages - Question 2/3</h1>
+<h2 id="first-class-functions">First-class functions</h2>
+<ul>
+<li>First class functions, significa que funções são tratadas como valores, podendo ser passadas como argumentos, retornadas de outras funções, guardadas numa estrutura de dados, construir novas funções dinamicamente, etc.</li>
+<li>Logo, não podemos compilar funções da mesma maneira, porque perdemos o seu contexto.</li>
+<li>A solução é usar um <strong>closure</strong> (fecho), que é uma estrutura de dados heap-allocated (para sobreviver a function calls) que contém:
+<ul>
+<li><strong>Um pointer para o código (o body da função)</strong></li>
+<li>Os <strong>valores das variáveis livres</strong> que podem ser necessárias por este código, chamado de <strong>environment</strong>.</li>
+</ul>
+</li>
+<li>The set fv(e) of the free variables of the expression e is computed as follows:</li>
+</ul>
+<p><img src="image.png" alt="Free variables"></p>
+<p><img src="image-1.png" alt="alt text"></p>
+<ul>
+<li>
+<p>Uma boa maneira de compilar closures é em dois passos:</p>
+<ul>
+<li>Primeiro, substituir todas as fun x -&gt; e por construções explicitas de closure, em clos f [y1, ..., yn] , onde yi são as variáveis livres de fun x -&gt; e e f é o nome de uma função global letfun f [y1, ..., yn] x = e', onde e' é derivado de e, by replacing constructions fun recursively (<strong>closure conversion</strong>)</li>
+<li>Segundo, compilar o código obtido, que só contem declarações de letfun functions.</li>
+</ul>
+</li>
+<li>
+<p>Cada função tem um único argumento, passado no registo %rdi, O closure é passado no registo %rsi.</p>
+</li>
+<li>
+<p>O stack frame é o seguinte, onde v1,...,vm são as variáveis locais:</p>
+</li>
+</ul>
+<h2 id="question-2---closure-conversion">Question 2 - Closure conversion</h2>
+<p><strong>Goal</strong> - Transform all function values into explicit closures <strong>(pairs of code pointers and their environment)</strong>, to make all free variables visible at runtime, as required by low-level implementation.</p>
+<p><strong>Steps (direct from lectures &amp; solved examples):</strong></p>
+<ol>
+<li>
+<p><strong>Identify all function values (lambdas, partial applications, recursive fns).</strong></p>
+</li>
+<li>
+<p><strong>Compute free variables for each function (fv(e) formula).</strong></p>
+</li>
+</ol>
+<p><img src="image.png" alt="Free variables"></p>
+<ol start="3">
+<li>For each function:</li>
+</ol>
+<ul>
+<li>Create a global function (letfun f [env] x = ...) where [env] are the free variables, and x is the explicit argument.</li>
+<li>Replace the function value by clos f [actual_env_values].</li>
+</ul>
+<ol start="4">
+<li>For recursion:</li>
+</ol>
+<ul>
+<li>The closure environment will often include the function itself.</li>
+</ul>
+<ol start="5">
+<li>Function application:</li>
+</ol>
+<ul>
+<li>All function applications become &quot;apply the closure&quot;: code pointer is extracted from the closure, and called with the environment.</li>
+</ul>
+<p><img src="image-18.png" alt="Original"></p>
+<p><img src="image-19.png" alt="Solução"></p>
+<p><img src="image-30.png" alt="Extra"></p>
+<p><img src="image-31.png" alt="Solução"></p>
+<h2 id="question-3---compiling-pattern-matching-expressions-matrix-based-algorithm">Question 3 - Compiling pattern-matching expressions (Matrix-based Algorithm)</h2>
+<p>Pattern Matching	- Build matrix, check first column, variable = let, else case split by constr, recur.</p>
+<p><img src="image-20.png" alt="Pergunta"></p>
+<p>Apresentar a matriz da expressão (M):</p>
+<p><img src="image-21.png" alt="Matriz"></p>
+<p><strong>Algorithm Structure (from class/lectures):</strong>
+Given a matrix with patterns in the first column:</p>
+<ul>
+<li>
+<p>If all entries are variable patterns (not the case here), use let to bind variable and continue to the next column.</p>
+</li>
+<li>
+<p>If there are constructor patterns:</p>
+<ul>
+<li>Partition the rows by constructor for the first column.</li>
+<li>For each constructor, create a sub-matrix of rows for that constructor, substituting any fields.</li>
+<li>For each constructor, recursively apply the algorithm to the submatrix.</li>
+</ul>
+</li>
+</ul>
+<p><img src="image-22.png" alt="alt text"></p>
+<p><img src="image-23.png" alt="alt text"></p>
+<p><img src="image-24.png" alt="alt text"></p>
+<h3 id="continua%C3%A7%C3%A3o-da-aula">Continuação da aula</h3>
+<p><img src="image-2.png" alt="alt text"></p>
+<ul>
+<li>
+<p>Para compilar clos f [y1,..., yn] fazemos o seguinte:</p>
+<ul>
+<li>Alocamos um bloco de tamanho n + 1 no heap com malloc</li>
+<li>Guardamos o endereço de f no primeiro campo do bloco</li>
+<li>guardamos os valores de y1,..., yn nos restantes campos do bloco</li>
+<li>retornamos o ponteiro para o bloco</li>
+</ul>
+</li>
+<li>
+<p>Nota: a dealocação do bloco é feita pelo garbage collector.</p>
+</li>
+<li>
+<p>Para compilar e1 e2, fazemos:</p>
+<ul>
+<li>Compilamos e1 para o registo %rsi (o seu valor é um p1 para o closure)</li>
+<li>Compilamos e2 para o registo %rdi</li>
+<li>Chamamos a função com o adereço obtido pelo primeiro campo do closure com <code>call *%rsi</code> isto é um jump para um endereço dinamico.</li>
+</ul>
+</li>
+<li>
+<p>Para compilar o acesso à variável x, distinguimos os 4 casos:</p>
+<ul>
+<li><strong>global variable</strong> - o valor é guardado no endereço dado pelo label x</li>
+<li><strong>local variable</strong> - o valor está em n(%rbp) / num registo</li>
+<li><strong>variable contained in a closure</strong> - o valor está em n(%rsi) / num registo, onde n é o número de variáveis livres antes de x</li>
+<li><strong>function argument</strong> - o valor está em %rdi (o primeiro argumento da função)</li>
+</ul>
+</li>
+<li>
+<p>Para compilar a declaração letfun f [y1,..., yn] x = e, fazemos:</p>
+<ul>
+<li>salvar e setar %rbp</li>
+<li>alocar espaço no stack para as variáveis locais</li>
+<li>avaliar e no registo %rax</li>
+<li>apagar o stack frame e restaurar %rbp</li>
+<li>executar <code>ret</code> para retornar o valor no registo %rax</li>
+</ul>
+</li>
+</ul>
+<h2 id="tail-call-optimization">Tail call optimization</h2>
+<p><img src="image-3.png" alt="Tail Call"></p>
+<ul>
+<li>
+<p>A <strong>tail call</strong> é uma chamada de função que é a última ação de uma função, ou seja, não há mais código a ser executado após a chamada.</p>
+</li>
+<li>
+<p>Nós podemos apagar o stack frame da função que faz a tail call antes de fazer a chamada, porque não precisamos mais dele.</p>
+</li>
+<li>
+<p>Melhor, podemos reutilizar para fazer a tail call, em particular o endereço de retorno. <strong>Ou seja, podemos fazer um jump em vez de um call.</strong></p>
+</li>
+</ul>
+<h2 id="pattern-matching">Pattern-matching</h2>
+<ul>
+<li>O objetivo do compilador é transformar instruções de alto nível numa sequência de testes elementares (constructor tests and constants comparison) e aceder aos campos de dados necessários.</li>
+<li>Consideremos a construção <code>match x with p1 -&gt; e1 | ... | pn -&gt; en</code>, onde pi são padrões e ei são expressões.</li>
+<li>Um padrão é definido pela sintax abstrata:</li>
+<li>p::= x | C(p,...,p)</li>
+<li>Onde C é um construtor que pode ser:
+<ul>
+<li>Uma constante</li>
+<li>Um construtor constante de um tipo algébrico, como [] ou por exemplo, Empty como type t = Empty | ...</li>
+<li>Um construtor com argumentos como :: ou por exemplo Node as in type t = Node of t * t | ...</li>
+<li>Um construtor de um n-tuplo com n &gt;=2</li>
+</ul>
+</li>
+<li>Dizemos que um padrão p é linear se todas as variáveis são usadas no máximo uma vez em p.</li>
+<li>Também se pode incluir padrões em valores: v::=C(v,...,v)</li>
+<li>Dizemos que um valor dá match no padrão p se existir uma substituição σ, de variáveis em valores tal que v = σ(p).</li>
+</ul>
+<p><img src="image-4.png" alt="alt text"></p>
+<p><img src="image-5.png" alt="alt text"></p>
+<p><img src="image-6.png" alt="alt text"></p>
+<p><img src="image-7.png" alt="alt text"></p>
+<p><img src="image-8.png" alt="alt text"></p>
+<p><img src="image-9.png" alt="alt text"></p>
+<ul>
+<li>Matrix solution to use on the test:</li>
+</ul>
+<p><img src="image-10.png" alt="alt text"></p>
+<p><img src="image-11.png" alt="alt text"></p>
+<p><img src="image-12.png" alt="alt text"></p>
+<p><img src="image-13.png" alt="alt text"></p>
+<h1 id="compilation-schemes-using-and-creating---question-45">Compilation Schemes, using and creating - Question 4/5</h1>
+<h2 id="question-4">Question 4</h2>
+<p><img src="image-25.png" alt="Question 4"></p>
+<pre class="hljs"><code><div>    <span class="hljs-string">movq</span> <span class="hljs-string">$42,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-number">-8</span><span class="hljs-string">(%rbp)</span>
+    <span class="hljs-string">movq</span> <span class="hljs-number">-8</span><span class="hljs-string">(%rbp),</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">testq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">jz</span> <span class="hljs-string">L_else</span>
+    <span class="hljs-string">movq</span> <span class="hljs-number">-8</span><span class="hljs-string">(%rbp),</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">pushq</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">$10,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">%rsi</span>
+    <span class="hljs-string">popq</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">addq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-number">-16</span><span class="hljs-string">(%rbp)</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L_else:</span>
+    <span class="hljs-string">movq</span> <span class="hljs-number">-8</span><span class="hljs-string">(%rbp),</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">pushq</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">$2,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">%rsi</span>
+    <span class="hljs-string">popq</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">addq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-number">-24</span><span class="hljs-string">(%rbp)</span>
+<span class="hljs-attr">L_end:</span>
+
+</div></code></pre>
+<h2 id="question-5">Question 5</h2>
+<p><img src="image-26.png" alt="Question 5"></p>
+<p><img src="image-27.png" alt="Solução"></p>
+<h3 id="more-possible-examples">More possible examples:</h3>
+<p>A. For Loop - for (x := e1; cond; x := e2) { s }</p>
+<p>Equivalent to:</p>
+<pre class="hljs"><code><div>x := e1;
+<span class="hljs-keyword">while</span> (cond) {
+  s;
+  x := e2;
+}
+</div></code></pre>
+<p>Schema:</p>
+<pre class="hljs"><code><div><span class="hljs-string">C(for</span> <span class="hljs-string">(x</span> <span class="hljs-string">:=</span> <span class="hljs-string">e1;</span> <span class="hljs-string">cond;</span> <span class="hljs-string">x</span> <span class="hljs-string">:=</span> <span class="hljs-string">e2)</span> <span class="hljs-string">{</span> <span class="hljs-string">s</span> <span class="hljs-string">})</span> <span class="hljs-string">≡</span>
+  <span class="hljs-string">C(x</span> <span class="hljs-string">:=</span> <span class="hljs-string">e1)</span>
+<span class="hljs-attr">L_start:</span>
+  <span class="hljs-string">C(cond)</span>
+  <span class="hljs-string">testq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">%rdi</span>
+  <span class="hljs-string">jz</span> <span class="hljs-string">L_end</span>
+  <span class="hljs-string">C(s)</span>
+  <span class="hljs-string">C(x</span> <span class="hljs-string">:=</span> <span class="hljs-string">e2)</span>
+  <span class="hljs-string">jmp</span> <span class="hljs-string">L_start</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<p>B. For-Each Over a List</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> x in l <span class="hljs-keyword">do</span> s
+</div></code></pre>
+<p>Equivalent to:</p>
+<pre class="hljs"><code><div><span class="hljs-string">C(for</span> <span class="hljs-string">x</span> <span class="hljs-string">in</span> <span class="hljs-string">l</span> <span class="hljs-string">do</span> <span class="hljs-string">s)</span> <span class="hljs-string">≡</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">ofs_l(%rbp),</span> <span class="hljs-string">%rsi</span>    <span class="hljs-string">;</span> <span class="hljs-string">start</span> <span class="hljs-string">with</span> <span class="hljs-string">list</span> <span class="hljs-string">in</span> <span class="hljs-string">%rsi</span>
+<span class="hljs-attr">L_start:</span>
+  <span class="hljs-string">cmpq</span> <span class="hljs-string">$0,</span> <span class="hljs-string">%rsi</span>             <span class="hljs-string">;</span> <span class="hljs-string">test</span> <span class="hljs-string">for</span> <span class="hljs-string">[]</span>
+  <span class="hljs-string">je</span> <span class="hljs-string">L_end</span>
+  <span class="hljs-string">movq</span> <span class="hljs-number">0</span><span class="hljs-string">(%rsi),</span> <span class="hljs-string">%rdi</span>        <span class="hljs-string">;</span> <span class="hljs-string">get</span> <span class="hljs-string">head</span> <span class="hljs-string">(x)</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">ofs_x(%rbp)</span>    <span class="hljs-string">;</span> <span class="hljs-string">store</span> <span class="hljs-string">x</span>
+  <span class="hljs-string">C(s)</span>
+  <span class="hljs-string">movq</span> <span class="hljs-number">8</span><span class="hljs-string">(%rsi),</span> <span class="hljs-string">%rsi</span>        <span class="hljs-string">;</span> <span class="hljs-string">move</span> <span class="hljs-string">to</span> <span class="hljs-string">next</span> <span class="hljs-string">node</span> <span class="hljs-string">(tail)</span>
+  <span class="hljs-string">jmp</span> <span class="hljs-string">L_start</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<p>0(%rsi): head of cons cell, 8(%rsi): pointer to next node.</p>
+<p>ofs_x(%rbp): stack offset for x.</p>
+<p>C. Tuple Pattern-Matching</p>
+<pre class="hljs"><code><div>let (x, y) = p in s
+</div></code></pre>
+<p>Equivalent to:</p>
+<pre class="hljs"><code><div><span class="hljs-string">C(let</span> <span class="hljs-string">(x,</span> <span class="hljs-string">y)</span> <span class="hljs-string">=</span> <span class="hljs-string">p</span> <span class="hljs-string">in</span> <span class="hljs-string">s)</span> <span class="hljs-string">≡</span>
+  <span class="hljs-string">C(p)</span>                      <span class="hljs-string">;</span> <span class="hljs-string">compute</span> <span class="hljs-string">tuple,</span> <span class="hljs-string">result</span> <span class="hljs-string">in</span> <span class="hljs-string">%rdi</span>
+  <span class="hljs-string">movq</span> <span class="hljs-number">0</span><span class="hljs-string">(%rdi),</span> <span class="hljs-string">%rsi</span>        <span class="hljs-string">;</span> <span class="hljs-string">first</span> <span class="hljs-string">element</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">ofs_x(%rbp)</span>
+  <span class="hljs-string">movq</span> <span class="hljs-number">8</span><span class="hljs-string">(%rdi),</span> <span class="hljs-string">%rsi</span>        <span class="hljs-string">;</span> <span class="hljs-string">second</span> <span class="hljs-string">element</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">ofs_y(%rbp)</span>
+  <span class="hljs-string">C(s)</span>
+</div></code></pre>
+<p>For triples: also extract 16(%rdi) for z.</p>
+<p>Adapt for more elements as needed.</p>
+<p>D. Function Definition and Call</p>
+<p>Let’s assume a simple convention:</p>
+<p>Closures are pointers to code and an environment (you might just store code pointers for simple cases).</p>
+<p>Parameters passed in %rdi, return in %rax (or %rdi).</p>
+<pre class="hljs"><code><div><span class="hljs-function">fun <span class="hljs-title">f</span><span class="hljs-params">(x)</span> </span>{ s }
+</div></code></pre>
+<p>Equivalent to:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">f:</span>
+  <span class="hljs-string">pushq</span> <span class="hljs-string">%rbp</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">%rsp,</span> <span class="hljs-string">%rbp</span>
+  <span class="hljs-string">...</span>    <span class="hljs-string">;</span> <span class="hljs-string">allocate</span> <span class="hljs-string">locals</span> <span class="hljs-string">as</span> <span class="hljs-string">needed</span>
+  <span class="hljs-string">;</span> <span class="hljs-string">x</span> <span class="hljs-string">is</span> <span class="hljs-string">passed</span> <span class="hljs-string">in</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">store</span> <span class="hljs-string">to</span> <span class="hljs-string">ofs_x(%rbp)</span>
+  <span class="hljs-string">movq</span> <span class="hljs-string">%rdi,</span> <span class="hljs-string">ofs_x(%rbp)</span>
+  <span class="hljs-string">C(s)</span>
+  <span class="hljs-string">popq</span> <span class="hljs-string">%rbp</span>
+  <span class="hljs-string">ret</span>
+</div></code></pre>
+<p>Function call:</p>
+<pre class="hljs"><code><div>y := f(e)
+</div></code></pre>
+<p>Equivalent to:</p>
+<pre class="hljs"><code><div><span class="hljs-string">C(e)</span>                       <span class="hljs-string">;</span> <span class="hljs-string">compute</span> <span class="hljs-string">argument,</span> <span class="hljs-string">result</span> <span class="hljs-string">in</span> <span class="hljs-string">%rdi</span>
+<span class="hljs-string">call</span> <span class="hljs-string">f</span>
+<span class="hljs-string">movq</span> <span class="hljs-string">%rax,</span> <span class="hljs-string">ofs_y(%rbp)</span>     <span class="hljs-string">;</span> <span class="hljs-string">store</span> <span class="hljs-string">result</span>
+</div></code></pre>
+<p>E. Pattern-Matching Over Lists</p>
+<p>Suppose:</p>
+<pre class="hljs"><code><div>match l with
+| []      -&gt; s1
+| x :: xs -&gt; s2
+</div></code></pre>
+<p>Schema:</p>
+<pre class="hljs"><code><div>    <span class="hljs-string">C(l)</span>                       <span class="hljs-string">;</span> <span class="hljs-string">result</span> <span class="hljs-string">in</span> <span class="hljs-string">%rdi</span>
+    <span class="hljs-string">cmpq</span> <span class="hljs-string">$0,</span> <span class="hljs-string">%rdi</span>              <span class="hljs-string">;</span> <span class="hljs-string">test</span> <span class="hljs-string">for</span> <span class="hljs-string">[]</span>
+    <span class="hljs-string">je</span> <span class="hljs-string">L_nil</span> <span class="hljs-string">;</span> <span class="hljs-attr">cons case:</span>
+    <span class="hljs-string">movq</span> <span class="hljs-number">0</span><span class="hljs-string">(%rdi),</span> <span class="hljs-string">%rsi</span>         <span class="hljs-string">;</span> <span class="hljs-string">x</span> <span class="hljs-string">=</span> <span class="hljs-string">head</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">ofs_x(%rbp)</span>
+    <span class="hljs-string">movq</span> <span class="hljs-number">8</span><span class="hljs-string">(%rdi),</span> <span class="hljs-string">%rsi</span>         <span class="hljs-string">;</span> <span class="hljs-string">xs</span> <span class="hljs-string">=</span> <span class="hljs-string">tail</span>
+    <span class="hljs-string">movq</span> <span class="hljs-string">%rsi,</span> <span class="hljs-string">ofs_xs(%rbp)</span>
+    <span class="hljs-string">C(s2)</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L_nil:</span>
+    <span class="hljs-string">C(s1)</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<h1 id="production-of-efficient-code---question-67">Production of Efficient Code - Question 6/7</h1>
+<h2 id="question-6">Question 6</h2>
+<p><img src="image-28.png" alt="Questão 6"></p>
+<p><img src="image-29.png" alt="Solução"></p>
+<h3 id="how-to">How to:</h3>
+<p><strong>A. Identify Variables and Their Roles</strong>
+#1, #2, ..., #7: pseudo-registers.</p>
+<p>Look for initialization, update, and loop conditions.</p>
+<p><strong>B. Look for Patterns</strong>
+Initialization:
+mov 0 #3 means #3 starts at 0 (n := 0)</p>
+<p>Loop condition:
+The ubranch/jnz at L3 uses #4 to decide which label to go to. #4 is set from #1 (mov #1 #4)</p>
+<p>Loop body:</p>
+<p>mov #1 #5: copy #1 to #5 (preparing for addition)</p>
+<p>binop add #5 #3: #3 := #5 + #3 (i.e., n := n + i)</p>
+<p>mov #1 #6, mov 1 #7, binop sub #7 #6, mov #6 #1: sequence for i := i - 1</p>
+<p>Loop jump:
+goto L2 (loop back)</p>
+<p>After loop:
+mov #3 #2 (result assignment: r := n)</p>
+<p><strong>C. Structure as High-Level Code</strong>
+Initialization before the loop.</p>
+<p>Loop condition as the branch.</p>
+<p>Loop body: accumulation and decrement.</p>
+<p>After loop: assign result.</p>
+<ol start="4">
+<li>General Method: How to Do This in an Exam
+Identify variable initializations (mov const #n): These are high-level assignments.</li>
+</ol>
+<p>Find the loop (or conditional) structure:</p>
+<p>Repeated jumps, conditional branches, and updates indicate loops.</p>
+<p>ubranch or cmp + jz/jnz mean while/if.</p>
+<p>Within the loop, find the body:</p>
+<p>Look for binop (arithmetic), mov (assignments).</p>
+<p>Map to +=, -= etc.</p>
+<p>Find what happens after the loop.</p>
+<p>Assign meaningful variable names for clarity.</p>
+<p>Write the code as if you were the one who wrote it originally, not the compiler!</p>
+<table>
+<thead>
+<tr>
+<th>RTL Pattern</th>
+<th>WHILE/C equivalent</th>
+<th>How to spot it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mov 0 #n</code></td>
+<td><code>n := 0;</code></td>
+<td>constant init</td>
+</tr>
+<tr>
+<td><code>ubranch jnz #v</code></td>
+<td><code>while (v != 0) { ... }</code></td>
+<td>conditional branch/jump</td>
+</tr>
+<tr>
+<td><code>binop add #a #b</code></td>
+<td><code>b := b + a;</code></td>
+<td>addition</td>
+</tr>
+<tr>
+<td><code>binop sub #a #b</code></td>
+<td><code>b := b - a;</code></td>
+<td>subtraction</td>
+</tr>
+<tr>
+<td><code>mov #a #b</code></td>
+<td><code>b := a;</code></td>
+<td>assignment</td>
+</tr>
+<tr>
+<td><code>goto</code> (back to start)</td>
+<td>(end of while)</td>
+<td>loop back</td>
+</tr>
+<tr>
+<td><code>mov #n #result</code></td>
+<td><code>result := n;</code></td>
+<td>result assignment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="possible-variants">Possible variants:</h3>
+<p><strong>A. Arithmetic For Loop</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div>sum := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (i := <span class="hljs-number">1</span>; i &lt;= N; i := i + <span class="hljs-number">1</span>) {
+    sum := sum + i;
+}
+</div></code></pre>
+<p>Corresponding RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#1           ; sum := 0</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">mov</span> <span class="hljs-number">1</span> <span class="hljs-comment">#2           ; i := 1</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">mov</span> <span class="hljs-comment">#2 #3</span>
+    <span class="hljs-string">cmp</span> <span class="hljs-comment">#3, #N</span>
+    <span class="hljs-string">jg</span>  <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L4:</span> <span class="hljs-string">mov</span> <span class="hljs-comment">#2 #4</span>
+    <span class="hljs-string">add</span> <span class="hljs-comment">#1 #4          ; #4 = sum + i</span>
+    <span class="hljs-string">mov</span> <span class="hljs-comment">#4 #1          ; sum := #4</span>
+<span class="hljs-attr">L5:</span> <span class="hljs-string">add</span> <span class="hljs-number">1</span> <span class="hljs-comment">#2           ; i := i + 1</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L3</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<p><strong>B. For-Each Loop Over a List</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div>s := <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (l != []) {
+    s := s + head(l);
+    l := tail(l);
+}
+</div></code></pre>
+<p>Possible RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#1           ; s := 0</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">mov</span> <span class="hljs-string">l</span> <span class="hljs-comment">#2           ; #2 = l</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">cmp</span> <span class="hljs-comment">#2, []         ; check if list is empty</span>
+    <span class="hljs-string">je</span> <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L4:</span> <span class="hljs-string">head</span> <span class="hljs-comment">#2 #3         ; #3 = head(l)</span>
+    <span class="hljs-string">add</span> <span class="hljs-comment">#1 #3          ; #3 = s + head(l)</span>
+    <span class="hljs-string">mov</span> <span class="hljs-comment">#3 #1          ; s := #3</span>
+    <span class="hljs-string">tail</span> <span class="hljs-comment">#2 #2         ; l := tail(l)</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L3</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<ul>
+<li>Note: head/tail are pseudo-instructions for accessing list fields.</li>
+</ul>
+<p><strong>C. Pattern-Matching on Tuples</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div>(x, y) := t;
+z := x + y;
+</div></code></pre>
+<p>Possible RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-string">t</span> <span class="hljs-comment">#1           ; #1 = t</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">fst</span> <span class="hljs-comment">#1 #2          ; #2 = x = first element</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">snd</span> <span class="hljs-comment">#1 #3          ; #3 = y = second element</span>
+<span class="hljs-attr">L4:</span> <span class="hljs-string">add</span> <span class="hljs-comment">#2 #3          ; #3 = x + y</span>
+<span class="hljs-attr">L5:</span> <span class="hljs-string">mov</span> <span class="hljs-comment">#3 #4          ; z := #3</span>
+</div></code></pre>
+<ul>
+<li>Note: fst/snd = pseudo-instructions for extracting tuple elements.</li>
+</ul>
+<p><strong>D. Function Call (No Closures)</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div>y := f(x);
+</div></code></pre>
+<p>Possible RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-string">x</span> <span class="hljs-comment">#1           ; #1 = x (argument)</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">call</span> <span class="hljs-string">f,</span> <span class="hljs-comment">#1, #2     ; call f with #1, result in #2</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">mov</span> <span class="hljs-comment">#2 #y          ; y := #2</span>
+</div></code></pre>
+<ul>
+<li>Note: Here, call f, #1, #2 is a pseudo-instruction.</li>
+</ul>
+<p><strong>E. Pattern-Matching on a List</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span> (l == []) {
+    z := <span class="hljs-number">0</span>;
+} <span class="hljs-keyword">else</span> {
+    z := head(l);
+}
+</div></code></pre>
+<p>Possible RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-string">l</span> <span class="hljs-comment">#1</span>
+    <span class="hljs-string">cmp</span> <span class="hljs-comment">#1, []</span>
+    <span class="hljs-string">je</span> <span class="hljs-string">L2</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">head</span> <span class="hljs-comment">#1 #2</span>
+    <span class="hljs-string">mov</span> <span class="hljs-comment">#2 #z</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#z</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<p><strong>F. For Loop with Tuple Accumulator</strong></p>
+<p>WHILE/C Code</p>
+<pre class="hljs"><code><div>(a, b) := (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+<span class="hljs-keyword">for</span> (i := <span class="hljs-number">1</span>; i &lt;= N; i := i + <span class="hljs-number">1</span>) {
+    a := a + i;
+    b := b + <span class="hljs-number">2</span> * i;
+}
+</div></code></pre>
+<p>Possible RTL</p>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span> <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#1           ; a := 0</span>
+    <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#2           ; b := 0</span>
+<span class="hljs-attr">L2:</span> <span class="hljs-string">mov</span> <span class="hljs-number">1</span> <span class="hljs-comment">#3           ; i := 1</span>
+<span class="hljs-attr">L3:</span> <span class="hljs-string">cmp</span> <span class="hljs-comment">#3, #N</span>
+    <span class="hljs-string">jg</span> <span class="hljs-string">L_end</span>
+<span class="hljs-attr">L4:</span> <span class="hljs-string">add</span> <span class="hljs-comment">#1 #3          ; #1 = a + i</span>
+    <span class="hljs-string">mov</span> <span class="hljs-comment">#1 #1          ; a := #1</span>
+    <span class="hljs-string">mul</span> <span class="hljs-number">2</span> <span class="hljs-comment">#3           ; #4 = 2 * i</span>
+    <span class="hljs-string">add</span> <span class="hljs-comment">#2 #4          ; #2 = b + (2*i)</span>
+    <span class="hljs-string">mov</span> <span class="hljs-comment">#2 #2          ; b := #2</span>
+    <span class="hljs-string">add</span> <span class="hljs-number">1</span> <span class="hljs-comment">#3           ; i := i + 1</span>
+    <span class="hljs-string">jmp</span> <span class="hljs-string">L3</span>
+<span class="hljs-attr">L_end:</span>
+</div></code></pre>
+<h2 id="interference-graphs---question-7-aula-1112">Interference Graphs - Question 7 Aula 11/12</h2>
+<ol>
+<li>The interference graph is an undirected graph where:</li>
+</ol>
+<ul>
+<li>Each node is a pseudo-register (e.g., #1, #2, ...).</li>
+<li>An edge between nodes means those two pseudo-registers are live at the same time (their values are needed simultaneously), so they cannot be stored in the same physical register.</li>
+<li>There are also “preference” (dashed) edges, usually for mov operations, where it's desirable (but not necessary) to put both in the same register to eliminate unnecessary moves.</li>
+</ul>
+<ol start="2">
+<li>How to Build It (Step by Step)</li>
+</ol>
+<p><strong>A. Perform Liveness Analysis</strong>
+For every instruction, compute which pseudo-registers are live &quot;out&quot; <strong>(needed after the instruction)</strong>.</p>
+<p>See lecture for the equations:</p>
+<pre class="hljs"><code><div>in(l) = <span class="hljs-keyword">use</span>(l) ∪ (<span class="hljs-keyword">out</span>(l) \ <span class="hljs-keyword">def</span>(l))
+<span class="hljs-keyword">out</span>(l) = ⋃ [<span class="hljs-keyword">in</span>(s) <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> successor s]
+</div></code></pre>
+<p><img src="image-14.png" alt="alt text"></p>
+<p><strong>def(l)</strong> = registers written (assigned) in the instruction at label l</p>
+<p><strong>use(l)</strong> = registers read (used) in the instruction</p>
+<p><img src="image-15.png" alt="alt text"></p>
+<p>For each instruction that defines a register v, draw an edge from v to every other register w live in out(l) (except for moves, see below).</p>
+<p><strong>B. Special Case: mov Instructions</strong>
+For mov w v, do not create an interference edge between w and v, but instead draw a dashed “preference” edge, meaning it’s preferable (but not necessary) to allocate them to the same register.</p>
+<h3 id="example">Example</h3>
+<pre class="hljs"><code><div><span class="hljs-attr">L1:</span>   <span class="hljs-string">mov</span> <span class="hljs-number">0</span> <span class="hljs-comment">#3         → L2</span>
+<span class="hljs-attr">L2:</span>   <span class="hljs-string">mov</span> <span class="hljs-comment">#1 #4        → L3</span>
+<span class="hljs-attr">L3:</span>   <span class="hljs-string">ubranch</span> <span class="hljs-string">jnz</span> <span class="hljs-comment">#4   → L4, L11</span>
+<span class="hljs-attr">L4:</span>   <span class="hljs-string">mov</span> <span class="hljs-comment">#1 #5        → L5</span>
+<span class="hljs-attr">L5:</span>   <span class="hljs-string">binop</span> <span class="hljs-string">add</span> <span class="hljs-comment">#5 #3  → L6</span>
+<span class="hljs-attr">L6:</span>   <span class="hljs-string">mov</span> <span class="hljs-comment">#1 #6        → L7</span>
+<span class="hljs-attr">L7:</span>   <span class="hljs-string">mov</span> <span class="hljs-number">1</span> <span class="hljs-comment">#7         → L8</span>
+<span class="hljs-attr">L8:</span>   <span class="hljs-string">binop</span> <span class="hljs-string">sub</span> <span class="hljs-comment">#7 #6  → L9</span>
+<span class="hljs-attr">L9:</span>   <span class="hljs-string">mov</span> <span class="hljs-comment">#6 #1        → L10</span>
+<span class="hljs-attr">L10:</span>  <span class="hljs-string">goto</span>             <span class="hljs-string">→</span> <span class="hljs-string">L2</span>
+<span class="hljs-attr">L11:</span>  <span class="hljs-string">mov</span> <span class="hljs-comment">#3 #2        → L12</span>
+<span class="hljs-attr">L12:</span>  <span class="hljs-string">(end)</span>
+</div></code></pre>
+<ol start="2">
+<li>Def/Use Table</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Instruction</th>
+<th>Def</th>
+<th>Use</th>
+<th>Succ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>mov 0 #3</td>
+<td>#3</td>
+<td>—</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>mov #1 #4</td>
+<td>#4</td>
+<td>#1</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>ubranch jnz #4</td>
+<td>—</td>
+<td>#4</td>
+<td>L4, L11</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>mov #1 #5</td>
+<td>#5</td>
+<td>#1</td>
+<td>L5</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>binop add #5 #3</td>
+<td>#3</td>
+<td>#5, #3</td>
+<td>L6</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>mov #1 #6</td>
+<td>#6</td>
+<td>#1</td>
+<td>L7</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>mov 1 #7</td>
+<td>#7</td>
+<td>—</td>
+<td>L8</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>binop sub #7 #6</td>
+<td>#6</td>
+<td>#7, #6</td>
+<td>L9</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>mov #6 #1</td>
+<td>#1</td>
+<td>#6</td>
+<td>L10</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>goto</td>
+<td>—</td>
+<td>—</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>mov #3 #2</td>
+<td>#2</td>
+<td>#3</td>
+<td>L12</td>
+</tr>
+<tr>
+<td>L12</td>
+<td>(end)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Compute Liveness: in and out for Each Label</li>
+</ol>
+<p>We'll fill this in backwards from L12 to L1.</p>
+<p>Initialize:
+out(L12) = ∅, in(L12) = ∅</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>def</th>
+<th>use</th>
+<th>out</th>
+<th>in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L12</td>
+<td>—</td>
+<td>—</td>
+<td>∅</td>
+<td>∅</td>
+</tr>
+<tr>
+<td>L11</td>
+<td>#2</td>
+<td>#3</td>
+<td>∅</td>
+<td>{#3}</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>—</td>
+<td>—</td>
+<td>{#1, #4}</td>
+<td>{#1, #4}</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>#1</td>
+<td>#6</td>
+<td>{#1, #4}</td>
+<td>{#6, #4}</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>#6</td>
+<td>#7, #6</td>
+<td>{#1, #4}</td>
+<td>{#7, #6, #4}</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>#7</td>
+<td>—</td>
+<td>{#7, #6, #4}</td>
+<td>{#6, #4}</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>#6</td>
+<td>#1</td>
+<td>{#7, #6, #4}</td>
+<td>{#1, #7, #4}</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>#3</td>
+<td>#5, #3</td>
+<td>{#1, #7, #4}</td>
+<td>{#5, #3, #1, #7, #4}</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>#5</td>
+<td>#1</td>
+<td>{#5, #3, #1, #7, #4}</td>
+<td>{#1, #3, #7, #4}</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>—</td>
+<td>#4</td>
+<td>{#1, #3, #7, #4} ∪ {#3} = {#1, #3, #4, #7}</td>
+<td>{#4, #1, #3, #7}</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>#4</td>
+<td>#1</td>
+<td>{#4, #1, #3, #7}</td>
+<td>{#1, #3, #7}</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>#3</td>
+<td>—</td>
+<td>{#1, #3, #7}</td>
+<td>{#3, #1, #7}</td>
+</tr>
+</tbody>
+</table>
+<p>Explanation for a couple tricky points:</p>
+<p>L10: Successor is L2; in(L2) = {#1, #3, #7}; so out(L10) = {#1, #4} (from path via goto loop).</p>
+<p>L3: Successors are L4 (in(L4) = {#1, #3, #7, #4}) and L11 (in(L11) = {#3}). So out(L3) = union = {#1, #3, #4, #7}.</p>
+<p>You might find small differences depending on how you resolve union points, but this is the main structure.</p>
+<ol start="4">
+<li>Build the Interference Graph</li>
+</ol>
+<p>L1: mov 0 #3 → L2
+def = #3, out = {#1, #3, #7}</p>
+<p>mov: add dashed #3--0 (0 is not a pseudo-register, so no effect)</p>
+<p>Interference: #3 -- #1, #3 -- #7 (do not do #3--#3).</p>
+<p>L2: mov #1 #4 → L3
+def = #4, out = {#1, #3, #7}</p>
+<p>mov: dashed #1--#4</p>
+<p>Interference: #4 -- #3, #4 -- #7 (not #4--#1 because mov)</p>
+<p>L3: ubranch jnz #4 → L4, L11
+def = none</p>
+<p>(no new edges)</p>
+<p>L4: mov #1 #5 → L5
+def = #5, out = {#1, #3, #7, #4}</p>
+<p>mov: dashed #1--#5</p>
+<p>Interference: #5 -- #3, #5 -- #7, #5 -- #4</p>
+<p>L5: binop add #5 #3 → L6
+def = #3, out = {#1, #7, #4}</p>
+<p>binop: interference #3 -- #1, #3 -- #7, #3 -- #4</p>
+<p>L6: mov #1 #6 → L7
+def = #6, out = {#7, #6, #4}</p>
+<p>mov: dashed #1--#6</p>
+<p>Interference: #6 -- #7, #6 -- #4</p>
+<p>L7: mov 1 #7 → L8
+def = #7, out = {#7, #6, #4}</p>
+<p>mov: dashed #1--#7 (not present, since src is constant)</p>
+<p>Interference: #7 -- #6, #7 -- #4</p>
+<p>L8: binop sub #7 #6 → L9
+def = #6, out = {#1, #4}</p>
+<p>binop: #6 -- #1, #6 -- #4</p>
+<p>L9: mov #6 #1 → L10
+def = #1, out = {#1, #4}</p>
+<p>mov: dashed #6--#1</p>
+<p>Interference: #1 -- #4</p>
+<p>L10: goto → L2
+no def, skip.</p>
+<p>L11: mov #3 #2 → L12
+def = #2, out = ∅</p>
+<p>mov: dashed #3--#2</p>
+<p>(no out to add interference)</p>
+<h2 id="optimizable-instructions">Optimizable instructions</h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Optimized Instruction / Trick</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x + 1</td>
+<td><code>incq</code></td>
+</tr>
+<tr>
+<td>x - 1</td>
+<td><code>decq</code></td>
+</tr>
+<tr>
+<td>x + 0</td>
+<td><em>(skip)</em></td>
+</tr>
+<tr>
+<td>x - 0</td>
+<td><em>(skip)</em></td>
+</tr>
+<tr>
+<td>x * 0</td>
+<td><code>xorq reg, reg</code></td>
+</tr>
+<tr>
+<td>x * 1</td>
+<td><em>(skip)</em></td>
+</tr>
+<tr>
+<td>x * 2^n</td>
+<td><code>shlq $n, reg</code></td>
+</tr>
+<tr>
+<td>x * -1</td>
+<td><code>negq reg</code></td>
+</tr>
+<tr>
+<td>x / 1</td>
+<td><em>(skip)</em></td>
+</tr>
+<tr>
+<td>x / 2^n</td>
+<td><code>sarq $n, reg</code></td>
+</tr>
+<tr>
+<td>x := x + y</td>
+<td><code>addq src, dst</code></td>
+</tr>
+<tr>
+<td>x := x - y</td>
+<td><code>subq src, dst</code></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
