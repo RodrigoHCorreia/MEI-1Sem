@@ -150,8 +150,3 @@ Better than 8 from greedyLB1!
 * The problem is splitting jobs across machines fairly.
 * GreedyLB1 = always give next job to least busy → guarantees at most 2× worse than perfect.
 * GreedyLB2 = sort jobs biggest first → guarantees at most 1.5× worse than perfect.
-
----
-
-## Approximation Analysis
-
