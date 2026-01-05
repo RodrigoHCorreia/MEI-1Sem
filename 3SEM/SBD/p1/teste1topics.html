@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>teste1topics.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="teste-1-detailed-topics">Teste 1 Detailed Topics</h1>
+<h2 id="part-1---raid-redundant-array-of-independent-disks">Part 1 - RAID (Redundant Array of Independent Disks)</h2>
+<h3 id="why-raid">Why RAID?</h3>
+<ul>
+<li>Disks are slow (compared to memory and CPU)</li>
+<li>Disks can fail, causing data loss</li>
+</ul>
+<p>Hence a DBMS cannot rely on a single disk for performance or reliability.</p>
+<h3 id="what-is-raid">What is RAID?</h3>
+<p>RAID organizes multiple physical disks into a single logical disk.</p>
+<ul>
+<li>The DBMS see one logical storage device</li>
+<li>RAID is transparent to higher layers</li>
+<li>Data is distributed across disks according to a RAID level</li>
+</ul>
+<h3 id="two-core-ideas-behind-raid">Two core ideas behind RAID</h3>
+<ol>
+<li><strong>Data striping</strong>
+<ul>
+<li>Data is split into stripes</li>
+<li>Stripes are distributed across multiple disks</li>
+<li>Improves parallelism and throughput</li>
+</ul>
+</li>
+<li><strong>Redundancy</strong>
+<ul>
+<li>Extra information is stored to recover from disk failures</li>
+<li>Improves reliability and availability</li>
+</ul>
+</li>
+</ol>
+<h3 id="common-raid-levels">Common RAID levels</h3>
+<h4 id="raid-0---striping-only-no-redundancy">RAID 0 - Striping only (no redundancy)</h4>
+<p><img src="image-1.png" alt="alt text"></p>
+<ul>
+<li>
+<p>Improved performance</p>
+</li>
+<li>
+<p>no fault tolerance.</p>
+</li>
+<li>
+<p>One disk fails, all data is lost.</p>
+</li>
+</ul>
+<h4 id="raid-1---mirroring">RAID 1 - Mirroring</h4>
+<p><img src="image-2.png" alt="alt text"></p>
+<p>Each disk has an exact copy on another disk.</p>
+<ul>
+<li>High reliability</li>
+<li>Improved read performance</li>
+<li>Storage cost is doubled.</li>
+<li>Writes must be performed on both disks.</li>
+<li>Reads can be parallelized.</li>
+</ul>
+<h4 id="raid-5--striping-with-distributed-parity">RAID 5 -Striping with distributed parity</h4>
+<p><img src="image-3.png" alt="alt text"></p>
+<ul>
+<li>
+<p>Data is striped across disks</p>
+</li>
+<li>
+<p>Parity information is also stored</p>
+</li>
+<li>
+<p>Parity is distributed, not centralized</p>
+</li>
+<li>
+<p>Can tolerate a single disk failure</p>
+</li>
+<li>
+<p>Better storage efficiency than RAID 1</p>
+</li>
+<li>
+<p>Write operations require updating data and parity.</p>
+</li>
+<li>
+<p>Small writes are more expensive due to parity updates.</p>
+</li>
+</ul>
+<h4 id="raid-6---double-distributed-parity">RAID 6 - Double distributed parity</h4>
+<p><img src="image-4.png" alt="alt text"></p>
+<ul>
+<li>
+<p>Similar to RAID 5</p>
+</li>
+<li>
+<p>Stores two independent parity values</p>
+</li>
+<li>
+<p>Can tolerate two simultaneous disk failures</p>
+</li>
+<li>
+<p>Higher reliability</p>
+</li>
+<li>
+<p>Higher overhead for writes</p>
+</li>
+</ul>
+<p><strong>RAID 6 is becoming increasingly important as disk sizes grow.</strong>
+because disk rebuild times are longer, and a probability of a second failure during rebuild increases.</p>
+<h4 id="comparison">Comparison</h4>
+<table>
+<thead>
+<tr>
+<th>RAID</th>
+<th>Striping</th>
+<th>Redundancy</th>
+<th>Failures tolerated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAID 0</td>
+<td>Yes</td>
+<td>No</td>
+<td>0</td>
+</tr>
+<tr>
+<td>RAID 1</td>
+<td>No</td>
+<td>Yes (mirror)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RAID 5</td>
+<td>Yes</td>
+<td>Yes (parity)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RAID 6</td>
+<td>Yes</td>
+<td>Yes (double parity)</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="what-raid-does-not-do">What RAID does not do</h4>
+<p>RAID doesn't understand tuples, files or indexes.
+It works with Blocks, Stripes and Disks.</p>
+<h2 id="part-2---physical-data-storage">Part 2 - Physical Data Storage</h2>
+<h3 id="why-physiical-storage-matters">Why physiical storage matters</h3>
+<ul>
+<li>A DBMS manages data stored on disk</li>
+<li>Disk access is orders of magnitude slower than memory access</li>
+<li>Therefore, DBMSs:
+<ul>
+<li>Organize data in blocks (pages)</li>
+<li>Transfer data block byu block, not tuple by tuple</li>
+</ul>
+</li>
+<li>This is why almost all cost formulas in the course are expressed in numbers of blocks transfers and seeks, not rows.</li>
+</ul>
+<h3 id="blocks">Blocks</h3>
+<ul>
+<li>A block (or page) is the unit of data transfer between disk and main memory</li>
+<li>Typical block size: 4KB, 8KB, 16KB</li>
+</ul>
+<p>Important consequences stated in the slides:</p>
+<ul>
+<li>The DBMS never reads a singles tuple directly</li>
+<li>When a tuple is accessed, the entire block containing it is read into memory</li>
+</ul>
+<h3 id="tuples">Tuples</h3>
+<ul>
+<li>
+<p>A tuple (or row) is a single record in a table</p>
+</li>
+<li>
+<p>Database records (turples) can be of variable length or fixed length</p>
+</li>
+<li>
+<p>A block does not store a fixed number of tuples</p>
+</li>
+<li>
+<p>The DBMS must use a record organization mechanism inside the block</p>
+</li>
+<li>
+<p>Common organizations:</p>
+<ul>
+<li>Slotted page (fixed-length or variable-length records)</li>
+<li>Heap file (variable-length records)</li>
+</ul>
+</li>
+</ul>
+<h3 id="calculating-number-of-tuples-per-block">Calculating number of tuples per block</h3>
+<ul>
+<li>The number of tuples depend on:
+<ul>
+<li>Block Size</li>
+<li>Average tuple size</li>
+<li>Block-level overhead (metadata)</li>
+</ul>
+</li>
+<li>Formula:
+<ul>
+<li>T = ⌊ B / R ⌋
+<ul>
+<li>T = number of tuples per block</li>
+<li>B = block size (in bytes)</li>
+<li>O = block-level overhead (in bytes)</li>
+<li>R = average tuple size (in bytes)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="numbers-of-blocks-of-a-table">Numbers of blocks of a table</h3>
+<ul>
+<li>The size of a relation is measured in number of blocks</li>
+<li>br = number of blocks in relation r</li>
+</ul>
+<p><strong>br = ⌈ Number of tuples x Tuple size / Block size ⌉</strong></p>
+<h3 id="main-memory-buffer-pool">Main memory (buffer pool)</h3>
+<ul>
+<li>The DBMS uses main memory to cache disk blocks</li>
+<li>Only a limited number of blocks fit in memory at a time</li>
+<li><strong>M = number of blocks that fit in main memory</strong></li>
+<li>If a relation fits in memory (br ≤ M), operations on that relation are much faster.</li>
+</ul>
+<h3 id="disk-access-costs">Disk access costs</h3>
+<ol>
+<li><strong>Seek time</strong> - time to position the read/write head over the correct track.</li>
+<li><strong>Transfer time</strong> - time to read/write one block once the head is in position. denoted as tT.</li>
+</ol>
+<ul>
+<li>The total i/o cost is modeled as: number of seeks, number of block transfers.</li>
+</ul>
+<h2 id="part-3---file-organization-inside-a-block">Part 3 - File organization (Inside a block)</h2>
+<ul>
+<li>
+<p>A file is a collection of disk blocks, each file stores the tuples of a relation, blocks of a file are not necessarily stored contiguously on disk.</p>
+</li>
+<li>
+<p><strong>Logical adjacency != Physical adjacency</strong></p>
+<ul>
+<li>Two blocks that are logically adjacent in a file may be physically stored in different locations on disk.</li>
+</ul>
+</li>
+</ul>
+<p>Tuples can be inserted, deleted and updated, can have variable length, etc.
+Therefore, the DBMS need a structure that:</p>
+<ul>
+<li>Avoids moving tuples unnecessarily</li>
+<li>Allos space reuse</li>
+<li>Supports efficient access</li>
+</ul>
+<h3 id="slotted-page-organization">Slotted-page organization</h3>
+<p>A slotted page is a block organized into:</p>
+<ol>
+<li>A header</li>
+</ol>
+<ul>
+<li>fixed-length area that contains metadata about the block</li>
+</ul>
+<ol start="2">
+<li>A slot directory</li>
+</ol>
+<ul>
+<li>each slot contains the offset of a tuple inside the block or a marker indicating that the slot is empty.</li>
+<li><strong>slots are fixed-length, slot numbers don't change when tuples move.</strong></li>
+</ul>
+<ol start="3">
+<li>A tuple area - variable-length area that stores the actual tuples.</li>
+</ol>
+<ul>
+<li>Tuples are store from the end of the block towards the slot directory.</li>
+</ul>
+<p><img src="image.png" alt="Slotted File"></p>
+<h3 id="why-does-this-solve-our-problems">Why does this solve our problems?</h3>
+<ul>
+<li>
+<p>If a tuple changes size, the tupls can be moved inside the block, only the slot offset needs to be updated.</p>
+</li>
+<li>
+<p>External references use: (block id, slot number) pairs, so they don't change when tuples move.</p>
+</li>
+<li>
+<p>Avoiding updating indexes or pointers in other blocks.</p>
+</li>
+<li>
+<p>On deletion, the slot is marked as free, its space becomes part of the free space region.</p>
+</li>
+<li>
+<p>Allows efficient insertions and reduced fragmentation.</p>
+</li>
+<li>
+<p><strong>Tuples are not stored in any particular order inside the block.</strong></p>
+</li>
+<li>
+<p>Ordering must be provided by file organization or indexes.</p>
+</li>
+<li>
+<p>Slotted pages are used both for heap files, sorted files and indexed files, since they are independent of query language or index type.</p>
+</li>
+</ul>
+<h2 id="part-4---file-organizations">Part 4 - File organizations</h2>
+<h3 id="heap-unordered-file-organization">Heap (Unordered) File organization</h3>
+<p><strong>Definition:</strong> A heap file is a collection of blocks storing tuples in no particular order.</p>
+<p><strong>Operations:</strong></p>
+<ul>
+<li>
+<p><strong>Insertion:</strong> add the tuple to any block with enough free space, if none exist allocate a new block and add it to the file.</p>
+</li>
+<li>
+<p><strong>Deletion:</strong> remove tuple, free space is recorded in the block, no reordering performed.</p>
+</li>
+<li>
+<p><strong>Search:</strong> requires a <strong>linear scan</strong> of all blocks in the file, unless an index exists.</p>
+</li>
+<li>
+<p>Very efficient insertions</p>
+</li>
+<li>
+<p>Very inefficient searches</p>
+</li>
+<li>
+<p>No odering guarantees</p>
+</li>
+</ul>
+<p>Heap files are suitable when access is mostly via indexes.</p>
+<h3 id="sequential-sorted-file-organization">Sequential (sorted) file organization</h3>
+<p><strong>Definition:</strong> Tuples are stored sorted on a search key, and the file is physically ordered by that key.</p>
+<p><strong>Operations:</strong></p>
+<ul>
+<li>
+<p><strong>Insertion:</strong> Tuple must be placed in the correct sorted position, may require shifting tuples or creating overflow blocks.</p>
+</li>
+<li>
+<p><strong>Deletion:</strong> Remove tuple, may leave holes, does not automatically restore compactness.</p>
+</li>
+<li>
+<p><strong>Search</strong>: Efficient for equality search and range queries using binary search at block level.</p>
+</li>
+<li>
+<p>Performance degrades as insertions and deletions occur.</p>
+</li>
+<li>
+<p>Therefore periodic reorganization may be required.</p>
+</li>
+<li>
+<p>This motivates the introduction of B +-tree later.</p>
+</li>
+</ul>
+<h3 id="multitable-clustering-file-organization">Multitable clustering file organization</h3>
+<p><strong>Definition:</strong> Tuples from multiple relations are stored together in the same file, based on a common clustering key.</p>
+<ul>
+<li>Used to optimize join operations between the clustered relations.</li>
+<li>Reduces the number of disk accesses during joins.</li>
+<li>Worse performance for single-relation queries.</li>
+</ul>
+<h3 id="hashed-file-organization">Hashed file organization</h3>
+<p><strong>Definition:</strong> A hash function is applied to a search key, the result determines the bucket (block), each bucket corresponds to one or more blocks.</p>
+<p><strong>Operations:</strong></p>
+<ul>
+<li><strong>Insertion:</strong> Tuple is placed in its bucket, if full, use overflow blocks.</li>
+<li><strong>Deletion:</strong> Remove tuple from its bucket, space reclaimed locally.</li>
+<li>Search: efficient for equality conditions, requires computing the hash value.</li>
+</ul>
+<p>Limitations:</p>
+<ul>
+<li>No support for range queries</li>
+<li>Hashing destroys ordering</li>
+</ul>
+<p>This is explicitly contrasted with ordered files and B+-trees indexes.</p>
+<h3 id="comparison-of-file-organizations">Comparison of file organizations</h3>
+<table>
+<thead>
+<tr>
+<th>Organization</th>
+<th>Order</th>
+<th>Insert</th>
+<th>Search</th>
+<th>Range queries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heap</td>
+<td>None</td>
+<td>Fast</td>
+<td>Slow</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Sequential</td>
+<td>Sorted</td>
+<td>Slow</td>
+<td>Fast</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Hashed</td>
+<td>Hash-based</td>
+<td>Fast</td>
+<td>Fast (equality)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Multitable</td>
+<td>Clustered</td>
+<td>Slow</td>
+<td>Fast (joins)</td>
+<td>Limited</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part-5---indexing-basic-concepts">Part 5 - Indexing: Basic concepts</h2>
+<h3 id="why-indexing">Why indexing?</h3>
+<ul>
+<li>
+<p>Searching heap files requires a linear scan, which can be expensive.
+therefore, <strong>indexes are auxiliary data structures used to speed up access to data</strong></p>
+</li>
+<li>
+<p>Can be compared to a library catalog, where you locate a book without scanning all shelves.</p>
+</li>
+</ul>
+<h3 id="what-it-is">What it is</h3>
+<ul>
+<li>
+<p>A data stucture that allows efficient retrieval of records based on the values of one or more attributes.</p>
+</li>
+<li>
+<p>An index is stored in a separate file</p>
+</li>
+<li>
+<p>It is smaller than the data file</p>
+</li>
+<li>
+<p>It contains index entries, not full tuples.</p>
+</li>
+</ul>
+<h3 id="structure">Structure</h3>
+<p>(search-key value, pointer)</p>
+<ul>
+<li>The search-key value is the attribute(s) used for lookup</li>
+<li>Pointer is a reference to a record or a block or a bucket.</li>
+</ul>
+<p>The search key is <strong>not necessarily</strong> the primary key.</p>
+<h3 id="search-key-vs-primary-key">Search key vs primary key</h3>
+<ul>
+<li>Search key: attribute(s) on which the index is built</li>
+<li>Primary key: attribute(s) that uniquely identify a tuple in a relation</li>
+</ul>
+<p><strong>A search key may or may not be unique.</strong></p>
+<h3 id="what-are-they-evaluated-on-metrics">What are they evaluated on (metrics)</h3>
+<ul>
+<li>Access types supported efficiently (equality, range queries)</li>
+<li>Access time</li>
+<li>Insertion and deletion time</li>
+<li>Space overhead</li>
+</ul>
+<p>These criteria are used to compare ordered vs hash indexes and justify index choices in exams.</p>
+<h3 id="two-fundamental-index-types">Two fundamental index types</h3>
+<ol>
+<li><strong>Ordered indexes</strong> - maintain entries in a sorted order based on the search key.
+<ul>
+<li>Support efficiently equality search and range queries and ordered retrieval.</li>
+<li>The basis for B+-tree indexes.</li>
+</ul>
+</li>
+<li><strong>Hash indexes</strong> - use a hash function to map search key values to index entries.
+<ul>
+<li>Efficient for equality search</li>
+<li><strong>Hash indexes do not support range queries efficiently</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>Indexes improve access but increase maintenance cost.</strong></p>
+<h3 id="cost-of-indexes">Cost of indexes</h3>
+<p><strong>Every insertion, deletion, or update of a record may require updating all indexes on that relation</strong></p>
+<p><strong>therefore indexes speed up reads but slow down writes.</strong></p>
+<h2 id="part-6---ordered-indexes">Part 6 - Ordered indexes</h2>
+<p>In an ordered index, index entries are stored sorted on the search-key value.</p>
+<p>Important consequences:</p>
+<ul>
+<li>Index entries have a total order</li>
+<li>Searching can exploit that order</li>
+<li>Range queries become efficient</li>
+</ul>
+<p>Two roles of ordered indexes:</p>
+<ol>
+<li><strong>Clustering index</strong> - determines the physical order of data in the data file.
+<ul>
+<li>There is at most one clustering index per relation.</li>
+<li>Data records are stored in the same order as the index entries.</li>
+</ul>
+</li>
+<li><strong>Non-clustering index</strong> - does not affect the physical order of data.</li>
+</ol>
+<h3 id="clustering-index-also-called-primary-index">Clustering index (also called primary index)</h3>
+<p>A clustering index is an index whose search key determines the physical order of the data file.</p>
+<p><strong>The data file is sequentially ordered on the search key</strong>
+<strong>The search key is often the primary key, but not necessarily.</strong></p>
+<p><strong>THERE CAN BE ONLY ONE CLUSTERING INDEX PER FILE.</strong> because a file can only be physically ordered in one way.</p>
+<hr>
+<h3 id="secondary-non-clustering-index">Secondary (non-clustering) index</h3>
+<p>A secondary index is an index whose search key specifies an order different from the sequential order of the file.</p>
+<p>The data file is NOT ordered on the search key.
+Index entries point to records scattered throughout the data file.</p>
+<p>Sequential scans using a secondary index are expensive.</p>
+<h2 id="each-tuple-may-be-in-a-different-block-causing-many-io-operations">Each tuple may be in a different block, causing many i/o operations.</h2>
+<h3 id="dense-vs-sparse-indexes">Dense vs sparse indexes</h3>
+<p>Density is a property of ordered indexes.</p>
+<ul>
+<li>
+<p><strong>Dense index:</strong> A dense index contains an index entry for every search-key value in the file.</p>
+</li>
+<li>
+<p>If search keys are unique, one entry per record.</p>
+</li>
+<li>
+<p>If search keys are not unique, one entry per distinct search-key value.</p>
+</li>
+<li>
+<p>larger index, faster lookups, more maintenance overhead.</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>Sparse index:</strong> A sparse index contains index entries for only some of the search-key values in the file.</li>
+<li><strong>Sparse indexes are applicable only when the data file is sequentially ordered on the search key</strong></li>
+</ul>
+<p>This ties sparse indexes directly to clustering indexes.</p>
+<p>To find a record with search key k:</p>
+<ul>
+<li>
+<p>Find the index entry with the largest search-key value &lt; K</p>
+</li>
+<li>
+<p>Start a sequential scan from the pointed block</p>
+</li>
+<li>
+<p>Smaller index, less maintenance overhead, slower lookup.</p>
+</li>
+</ul>
+<h3 id="comparison-dense-vs-sparse">Comparison dense vs sparse</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Dense</th>
+<th>Sparse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index entries</td>
+<td>One per key</td>
+<td>Some keys only</td>
+</tr>
+<tr>
+<td>Index size</td>
+<td>Larger</td>
+<td>Smaller</td>
+</tr>
+<tr>
+<td>Lookup speed</td>
+<td>Faster</td>
+<td>Slower</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Higher</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td>Requires sorted file</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="secondary-indexes-are-always-dense">Secondary indexes are always dense</h3>
+<p>Data file is not ordered on the search key, therefore sparse entries would not be sufficient to locate all records.</p>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>Indexes improve search but:
+<ul>
+<li>Increase storage overhead</li>
+<li>Increase maintenance cost on insertions, deletions, updates</li>
+</ul>
+</li>
+</ul>
+<h2 id="part-7---b-tree-index-files">Part 7 - B+-tree index files</h2>
+<h3 id="why-b-trees">Why B+-trees?</h3>
+<ul>
+<li>Indexed-sequential files degrade as the file grows.</li>
+<li>This motivates B+-trees.</li>
+</ul>
+<h3 id="what-is-a-b-tree">What is a B+-tree?</h3>
+<p>A B+-Tree index is an ordered index structure that:</p>
+<ul>
+<li>
+<p>Automatically reorganizes itself</p>
+</li>
+<li>
+<p>Supports efficient insertion and deletion</p>
+</li>
+<li>
+<p>Maintains balanced height</p>
+</li>
+<li>
+<p><strong>Reorganization is local</strong></p>
+</li>
+<li>
+<p>No global reorganization of the entire file is needed.</p>
+</li>
+</ul>
+<h3 id="core-structural-properties-of-b-trees">Core structural properties of B+-trees</h3>
+<p>Let n be the maximum number of pointer in a node.</p>
+<p><strong>Tree Properties:</strong></p>
+<ul>
+<li>All paths from the root to a leaf have the same length</li>
+<li>The tree is always balanced</li>
+</ul>
+<p><strong>Internal (non-leaf) nodes:</strong></p>
+<ul>
+<li>Contain between ⌈n/2⌉ and n pointers (except root)</li>
+<li>Contain search keys and pointers to child nodes</li>
+</ul>
+<p><strong>Leaf nodes:</strong></p>
+<ul>
+<li>Contain between ⌈(n-1)/2⌉ and n-1 search-key values</li>
+<li>Contain:
+<ul>
+<li>Search-key values</li>
+<li>Pointers to records (or buckets)</li>
+</ul>
+</li>
+<li>Leaf nodes are linked together in search-keyh order.</li>
+</ul>
+<p><strong>Root node:</strong></p>
+<ul>
+<li><strong>If its not a leaf, contains at least 2 children.</strong></li>
+<li><strong>If its a leaf, it may have between 0 and n-1 values.</strong></li>
+</ul>
+<h3 id="logical-structure-of-a-node">Logical structure of a node</h3>
+<p>A typical node has:</p>
+<ul>
+<li>Search keys: K1, K2, ..., Kn-1</li>
+<li>Pointers: P1, P2, ..., Pn
+Meaning:</li>
+<li>All keys in subtree P1 are &lt; K1</li>
+<li>Keys in subtree Pi are ≥ Ki-1 and &lt; Ki for 2 ≤ i ≤ n-1</li>
+<li>Keys in subtree Pn are ≥ Kn-1</li>
+</ul>
+<p><img src="image-5.png" alt="alt text"></p>
+<ul>
+<li>
+<p>All actual data pointers are stored in the leaf nodes.</p>
+</li>
+<li>
+<p>Internal nodes only store search keys and pointers.</p>
+</li>
+<li>
+<p>This is what distinguishes B+-trees from B-trees.</p>
+</li>
+</ul>
+<h3 id="sequential-access-via-leaf-linkage">Sequential access via leaf linkage</h3>
+<ul>
+<li>Leaf nodes are linked together in search-key order.</li>
+<li>This allows efficient range queries</li>
+<li>sequential access without returning to the root.</li>
+</ul>
+<p>Height grows logarithmically with the number of search keys.</p>
+<p><strong>If there are K search-key values, the height is at most ⌈log⌈n/2⌉(K)⌉</strong></p>
+<p>This is why very few nodes are accessed during searches.
+Disk I/O cost is low.</p>
+<ul>
+<li>Typically, a node is the size of a disk block.</li>
+<li>For a 4kb block, a node can contain around 100 search keys</li>
+</ul>
+<h3 id="non-unique-search-keys">Non-unique search keys</h3>
+<ul>
+<li>A b+-tree may store a composite key (search-key, record-id)</li>
+<li>Or points to buckets of records
+The handling of duplicates preserves ordering and the correctness of range queries.</li>
+</ul>
+<h2 id="part-8---hash-indexes">Part 8 - Hash indexes</h2>
+<ul>
+<li>Hash indexes are an alternative optimized for equality lookups.</li>
+<li>They use a hash function to distribute search-key values uniformly across buckets.</li>
+</ul>
+<p><img src="image-6.png" alt="alt text"></p>
+<h3 id="static-vs-dynamic-hashing">Static vs dynamic hashing</h3>
+<ul>
+<li>Static hashing has a fixed number of buckets.</li>
+<li>Dynamic hashing allows the number of buckets to grow and shrink as needed to <strong>reduce overflow chains</strong>.</li>
+</ul>
+<p>Hash indexes are appropriate when:</p>
+<ul>
+<li>
+<p>queries use only equality conditions.</p>
+</li>
+<li>
+<p>range queries are not required.</p>
+</li>
+<li>
+<p>These are not a general replacement for ordered indexes.</p>
+</li>
+</ul>
+<h3 id="comparison-ordered-vs-hash-indexes">Comparison ordered vs hash indexes</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Hash Index</th>
+<th>Ordered Index (B+-tree)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equality search</td>
+<td>Very efficient</td>
+<td>Efficient</td>
+</tr>
+<tr>
+<td>Range queries</td>
+<td>Not efficient</td>
+<td>Efficient</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Simple</td>
+<td>More complex</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part-9---query-processing">Part 9 - Query processing</h2>
+<ul>
+<li>Query processing involves translating a high-level query into a sequence of low-level operations that retrieve the required data efficiently.</li>
+<li><strong>SQL is declarative, so the DBMS must determine how to execute the query.</strong></li>
+</ul>
+<p>This is a multi-stage process:</p>
+<ol>
+<li>Parsing and translation</li>
+<li>Optimization</li>
+<li>Evaluation (execution)</li>
+</ol>
+<p>Starting with evaluation.</p>
+<h3 id="query-evaluation">Query evaluation</h3>
+<p><strong>Logical operators:</strong></p>
+<p>Selection (σ)
+Projection (π)
+Join (⋈)</p>
+<p><strong>Physical operators:</strong></p>
+<ul>
+<li>
+<p>Implementation of logical operators</p>
+</li>
+<li>
+<p>Example:</p>
+</li>
+<li>
+<p>Different join algorithms</p>
+</li>
+<li>
+<p>Different access methods</p>
+</li>
+<li>
+<p><strong>A single logical operator may have multiple physical implementations.</strong></p>
+</li>
+</ul>
+<h3 id="operator-at-a-time-vs-pipeline-processing">Operator-at-a-time vs pipeline processing</h3>
+<p><strong>Operator-at-a-time (materialization):</strong></p>
+<ul>
+<li>
+<p>Each operator:</p>
+<ul>
+<li>Reads its entire input</li>
+<li>Produces its entire output</li>
+<li>Stores the result (often on disk)</li>
+</ul>
+</li>
+<li>
+<p>The next operator then reads that result.</p>
+</li>
+<li>
+<p>High I/O cost, simple to implement.</p>
+</li>
+</ul>
+<p><strong>Pipeline processing:</strong></p>
+<ul>
+<li>
+<p>Operators produce output tuples one at a time</p>
+</li>
+<li>
+<p>Output of one operator is passed directly to the next</p>
+</li>
+<li>
+<p>Intermediate results may not be materialized.</p>
+</li>
+<li>
+<p>This reduces I/O cost, but is more complex to implement.</p>
+</li>
+</ul>
+<p>Not all operators can be pipelined.</p>
+<p>Some operators require all input before producing output (e.g., sorting, some aggregation operations).
+Blocking operators force materialization and break pipelines.</p>
+<p>Choice of access method affects performance significantly.</p>
+<p><strong>EARLY SELECTION AND PROJECTION IS BENEFICIAL TO REDUCE DATA VOLUME EARLY IN THE PLAN.</strong></p>
+<h2 id="part-10---join-algorithms">Part 10 - Join algorithms</h2>
+<p>A join as two input relations:</p>
+<p><strong>Outer relation R and inner relation S.</strong>
+And a join condition Equality or general condition</p>
+<p>The terms outer and inner are algorithmic, not semantic.</p>
+<h3 id="simple-nested-loop-join-nlj">Simple nested-loop join (NLJ)</h3>
+<p>The nested-loop join compares each tuple of the outer relation with each tuple of the inner relation</p>
+<ul>
+<li>For each tuple r ∈ R:
+<ul>
+<li>For each tuple s ∈ S:
+<ul>
+<li>Test join condition</li>
+<li>If satisfied, output result</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Very expensive, barely used in practice.</p>
+<h3 id="block-nested-loop-join-bnlj">Block nested-loop join (BNLJ)</h3>
+<p>Instead of comparing tuple by tuple, compare block by block.</p>
+<p>The outer relation is read block by block, and each block is compared with all blocks of the inner relation.</p>
+<ul>
+<li>Read a block of R into memory</li>
+<li>For each block of S:
+<ul>
+<li>Compare tuples in the blocks</li>
+<li>Repeat for all blocks of R</li>
+</ul>
+</li>
+</ul>
+<p><strong>Still expensive if both relations are large</strong>
+Heavily dependent on which relation is chosen as outer and on the available memory.</p>
+<p><strong>The smaller relation should be the outer relation to minimize total I/O cost.</strong>
+Because they are reread fewer times, and the i/o cost is reduced.</p>
+<h3 id="index-nested-loop-join-inlj">Index nested-loop join (INLJ)</h3>
+<p><strong>If an index exists on the join attribute of the inner relation</strong>
+The DBMS can avoid scanning the entire inner relation.</p>
+<p>For each tuple of the outer relation, an index is used to retrieve matching tuples from the inner relation.</p>
+<p><strong>Efficient when:</strong></p>
+<ul>
+<li>outer relation is small</li>
+<li>Inner relation has an apprpriate index.</li>
+</ul>
+<p>Poor performance if index access is expensive or unselective.</p>
+<h3 id="merge-join-sort-merge-join">Merge join (Sort-Merge join)</h3>
+<p>If both relations are sorted on the join attribute, they can be joined efficiently by scanning them in order.</p>
+<p><strong>Merge join requires both input relations to be sorted on the join attribute.</strong></p>
+<ul>
+<li>
+<p>Scan both relations sequentially</p>
+</li>
+<li>
+<p>Compare current tuples</p>
+</li>
+<li>
+<p>Advance pointers based on comparison</p>
+</li>
+<li>
+<p>Efficient for large relations</p>
+</li>
+<li>
+<p>Supports range joins</p>
+</li>
+<li>
+<p>May require sorting first</p>
+</li>
+</ul>
+<p><strong>SORTING IS A BLOCKING OPERATION</strong></p>
+<h3 id="hash-join">Hash join</h3>
+<p><strong>If the join condition is equality, hashing can be used to partition relations and reduce comparisons.</strong></p>
+<p>One relation is hashed into buckets, and the other relation probes those buckets.</p>
+<ul>
+<li>
+<p>Build phase: Hash the smaller relation R into buckets in memory.</p>
+</li>
+<li>
+<p>Probe phase: For each tuple in S, compute hash and probe corresponding bucket in R.</p>
+</li>
+<li>
+<p>Requires memory for hash table, does not support range joins, but efficient for large relations with equality joins.</p>
+</li>
+</ul>
+<h2 id="t07">T07</h2>
+<p>Cost is measured in terms of <strong>number of block transfers</strong> and <strong>number of seeks</strong>.</p>
+<p><strong>br = number of blocks in relation r</strong>
+<strong>bs = number of blocks in relation s</strong>
+<strong>M = number of blocks that fit in main memory</strong></p>
+<p>define tT (transfer time per block) and tS (seek time).
+Total cost example form: b* tT + S * tS.</p>
+<ul>
+<li>Buffers may already contain data; memory available varies due to concurrency; worst-case estimates assumes nothing is initially buffered.</li>
+</ul>
+<h3 id="selection-operation">Selection operation</h3>
+<p><strong>Bitmap index scan</strong> - 1 bitmap per query, 1 bit per page</p>
+<p>SELECT * FROM R WHERE age = 20 AND city = 'Lisbon';</p>
+<ul>
+<li>Secondary indexes exist</li>
+<li>Many matches</li>
+<li>DBMS doesn't know selectivity</li>
+</ul>
+<p>What the DBMS does:</p>
+<ol>
+<li>Scan index -&gt; build bitmap (1 bit per block)</li>
+<li>Mark blocks that contain matches</li>
+<li>Do one linear scan, but read only marked blocks</li>
+</ol>
+<p>Why is this efficient?</p>
+<ul>
+<li>Avoids random I/O</li>
+<li>Avoids fetching same block many times</li>
+<li>Adapts:
+<ul>
+<li>Few bits -&gt; behaves like index scan</li>
+<li>Many bits -&gt; behaves like file scan</li>
+</ul>
+</li>
+</ul>
+<p><strong>Never behaves very badly compared to best alternative.</strong></p>
+<p><strong>What's a bitmap</strong></p>
+<p>A bitmap is an array of bits</p>
+<hr>
+<p><strong>Bitmap indices</strong> - Where each distinct value of an attribute has a bitmap.</p>
+<ul>
+<li>designed for efficient querying on multiple keys, for attributess with few distinct values (gender, country, income level, etc.)</li>
+<li>Records are assumed numbered.</li>
+<li>For an attribute A, you keep one bitmap per value v of A.</li>
+<li>In bitmap bitmap-A-v, bit i is 1 if record i has A=v, else 0.</li>
+</ul>
+<hr>
+<p><strong>Why need a DELETED bitmap and a NULL bitmap?</strong></p>
+<p>Deleted / existence bitmap, marks whether a record is deleted or not, preventing deleted slots from appearing in query results.
+NULL bitmap intersects with other bitmaps to exclude NULL values from query results.</p>
+
+</body>
+</html>

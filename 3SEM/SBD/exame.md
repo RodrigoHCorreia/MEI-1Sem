@@ -1,7 +1,8 @@
 # Sistemas de Base de dados
 
+4 teoricas 8 praticas
 
-## Parte 1 - Core Systems and Storage
+## Teste 1 - Core Systems and Storage
 
 - How data is stored and accessed and how queries are executed physically.
 
@@ -50,7 +51,7 @@ Recovery (logging, undo/redo)
   - Sequential scans vs index scans
 
 
-## Parte 2 - Query Processing and Transactions
+## Teste 2 - Query Processing and Transactions
 
 - **Join algorithms & cost estimation (Very important)** - T07, T09
 - Typical questions:
@@ -80,4 +81,3 @@ Recovery (logging, undo/redo)
 - Typical questioons:
   - Complete the log after a crash
   - Which transactions are undone / redone
-
